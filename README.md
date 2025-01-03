@@ -28,15 +28,52 @@ From the above characteristic table, we can directly write the next state equati
 
 **Procedure**
 
+1.Define Module: Define a Verilog module for the T flip-flop with inputs (T, CLK) and outputs (Q, Q_bar).
+
+2.Declare Inputs and Outputs: Declare input and output ports for the module.
+
+3.Implement Flip-Flop Logic: Write Verilog code to implement the T flip-flop logic based on its functional table. Use a synchronous always @(posedge CLK) block to trigger the flip-flop on the positive edge of the clock signal.
+
+4.Simulate Using Testbench: Write a Verilog testbench to simulate the behavior of the T flip-flop under different input conditions.
+
+5.Apply Input Stimuli: In the testbench, apply various combinations of input stimuli (T, CLK) to cover all possible input states.
+
+6.Verify Output Behavior: Verify that the output behavior of the T flip-flop matches the expected behavior defined by its functional table.
+
+7.Check for Race Conditions: Ensure that there are no race conditions or undefined states in the design by analyzing the timing and sequence of input changes.
+
 /* write all the steps invloved */
 
 **PROGRAM**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
+    module t_ff_ (t, clk, rst, q);
+    input t, clk, rst;
+    output reg q;
+
+    always @(posedge clk or posedge rst) 
+    begin
+    if (rst)
+    q <= 0; // Reset the flip-flop
+    else if (t==0)
+    q <= q; 
+    else
+    q<=~q;
+    end
+    endmodule
+
+/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by:MAGESH S RegisterNumber:24900241
 */
 
 **RTL LOGIC FOR FLIPFLOPS**
 
+![Screenshot 2025-01-03 141303](https://github.com/user-attachments/assets/a1ce833d-1b3b-4cbe-ad2b-b366d7f87414)
+
+
 **TIMING DIGRAMS FOR FLIP FLOPS**
 
+![Screenshot 2025-01-03 141314](https://github.com/user-attachments/assets/2a7c4ada-dc08-4e04-b639-a65e4c28a233)
+
+
 **RESULTS**
+
+Thus the T flipflop using is implemented in verilog and validated their functionality using their functional tables
